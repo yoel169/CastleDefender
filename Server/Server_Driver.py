@@ -1,7 +1,8 @@
 import socket
 from pickle import dump, load, loads, dumps
 from _thread import *
-from os import listdir, path
+from os import listdir
+from Server import Menus
 
 server = "10.0.0.183"
 port = 5555
@@ -13,8 +14,10 @@ try:
 except socket.error as e:
     str(e)
 
-s.listen(1)
+s.listen(2)
 print("Waiting for a connection, Server Started")
+
+menu = Menus.Login
 
 
 def save(player):
@@ -50,6 +53,10 @@ def threaded_client(conn, string):
             break
 
         if user:
+            if len(user) == 1:
+                if user['message'] == 'menu':
+                    conn.sendall(dumps(menu))
+
             if len(user) == 2:
                 flag = log_in(user)
 
@@ -58,14 +65,12 @@ def threaded_client(conn, string):
 
                 if flag[0] == 'logged in':
                     print('logged in')
-                    break
 
             elif len(user) == 4:
                 print('created ', user['username'])
                 save(user)
                 reply = {'message': 'created', 'player:': None}
                 conn.sendall(dumps(reply))
-                break
 
     print("Lost connection")
     conn.close()
