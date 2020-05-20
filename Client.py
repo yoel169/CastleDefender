@@ -83,7 +83,7 @@ def main():
 
                             if response is None:
                                 print('failed to connect')
-                                helper.make_label(250, 240, 200, 40, 'failed to connect', 'uname', None)
+                                helper.make_label(250, 260, 200, 40, 'failed to connect', 'uname', None)
                             else:
                                 print('connected')
                                 message = {'message': 'menu'}
@@ -119,6 +119,7 @@ def main():
                     if event.user_type == gui.UI_BUTTON_PRESSED:
 
                         if event.ui_element == menu.exit_back_b:
+                            server.disconnect()
                             manager.clear_and_reset()
                             connect_menu.rebuild()
                             run = False
