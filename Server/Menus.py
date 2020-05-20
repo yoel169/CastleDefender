@@ -8,15 +8,16 @@ class Login:
         self.user = InputBox(160, 185, 10, 30)
         self.pswrd = InputBox(160, 285, 10, 30)
         self.flag = False
-        self.helper = helper = GuiHelper(500, 600, manager)
+        self.manager = manager
+        self.helper = GuiHelper(500, 600, manager)
 
         self.helper.make_label(250, 100, 120, 40, 'Login', 'title', None)
         self.helper.make_label(80, 200, 120, 40, 'username:', 'uname', None)
         self.helper.make_label(80, 300, 120, 40, 'password:', 'pass', None)
 
-        self.login_b = helper.make_button(250, 420, 80, 60, 'Login', None)
-        self.exit_b = helper.make_button(180, 550, 80, 60, 'Exit', None)
-        self.create_b = helper.make_button(320, 550, 120, 60, 'New Account', None)
+        self.login_b = self.helper.make_button(250, 420, 80, 60, 'Login', None)
+        self.exit_back_b = self.helper.make_button(180, 550, 80, 60, 'Back', None)
+        self.create_b = self.helper.make_button(320, 550, 120, 60, 'New Account', None)
         self.enter_b = None
         self.back_login_b = None
         self.class_selector = None
@@ -42,7 +43,7 @@ class Login:
         self.manager.clear_and_reset()
         self.name = None
         self.user = InputBox(160, 185, 10, 30)
-        self.pswrd = InputBox(160, 385, 10, 30)
+        self.pswrd = InputBox(160, 285, 10, 30)
         self.flag = False
 
         self.helper.make_label(250, 100, 120, 40, 'Login', 'title', None)
@@ -50,7 +51,7 @@ class Login:
         self.helper.make_label(80, 300, 120, 40, 'password:', 'pass', None)
 
         self.login_b = self.helper.make_button(250, 420, 80, 60, 'Login', None)
-        self.exit_b = self.helper.make_button(180, 550, 80, 60, 'Exit', None)
+        self.exit_back_b = self.helper.make_button(180, 550, 80, 60, 'Back', None)
         self.create_b = self.helper.make_button(320, 550, 120, 60, 'New Account', None)
         self.enter_b = None
         self.back_login_b = None
